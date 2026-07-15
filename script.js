@@ -46,35 +46,30 @@ header.classList.remove("scrolled");
 // Back To Top
 // ===============================
 
-const topBtn=document.getElementById("topBtn");
+const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll",()=>{
+if (topBtn) {
 
-if(window.scrollY>300){
+    window.addEventListener("scroll", () => {
 
-topBtn.style.display="block";
+        if (window.scrollY > 300) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
+
+    });
+
+    topBtn.onclick = () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    };
 
 }
-
-else{
-
-topBtn.style.display="none";
-
-}
-
-});
-
-topBtn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
 
 // ===============================
 // Counter Animation
