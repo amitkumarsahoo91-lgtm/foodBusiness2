@@ -110,8 +110,9 @@ function animateCounters() {
             current += increment;
 
             if (current >= target) {
+				const suffix = counter.dataset.suffix || "";
 
-                counter.innerText = target;
+                counter.innerText = target + suffix;
                 clearInterval(timer);
 
             } else {
