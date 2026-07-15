@@ -91,72 +91,69 @@ if (topBtn) {
 const counterSection = document.querySelector(".counter");
 const counters = document.querySelectorAll(".count");
 
-let counterPlayed = false;
+let isCounterAnimated = false;
 
-function animateCounter(counter) {
+function runCounterAnimation() {
 
-    const target = Number(counter.dataset.target);
-    const duration = 2000;
-    const stepTime = 20;
-    const steps = duration / stepTime;
-    const increment = target / steps;
+    counters.forEach(counter => {
 
-    let current = 0;
+        const target = parseInt(counter.dataset.target);
+        const duration = 2000;
+        const stepTime = 20;
+        const totalSteps = duration / stepTime;
+        const increment = target / totalSteps;
 
-    counter.innerText = "0";
+        let current = 0;
 
-    const timer = setInterval(() => {
+        counter.innerText = "0";
 
-        current += increment;
+        const timer = setInterval(() => {
 
-        if (current >= target) {
+            current += increment;
 
-            counter.innerText = target;
-            clearInterval(timer);
+            if (current >= target) {
 
-        } else {
+                counter.innerText = target;
+                clearInterval(timer);
 
-            counter.innerText = Math.floor(current);
+            } else {
 
-        }
-
-    }, stepTime);
-
-}
-
-if (counterSection) {
-
-    const counterObserver = new IntersectionObserver((entries) => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting && !counterPlayed) {
-
-                counterPlayed = true;
-
-                counters.forEach(counter => {
-
-                    animateCounter(counter);
-
-                });
+                counter.innerText = Math.floor(current);
 
             }
 
-            // Reset only when the section is completely outside the viewport
-            if (!entry.isIntersecting && entry.intersectionRatio === 0) {
-
-                counterPlayed = false;
-
-            }
-
-        });
-
-    }, {
-
-        threshold: 0.5
+        }, stepTime);
 
     });
 
-    counterObserver.observe(counterSection);
+}
+
+function handleCounter() {
+
+    if (!counterSection) return;
+
+    const rect = counterSection.getBoundingClientRect();
+
+    const sectionVisible =
+        rect.top <= window.innerHeight * 0.7 &&
+        rect.bottom >= window.innerHeight * 0.3;
+
+    if (sectionVisible && !isCounterAnimated) {
+
+        isCounterAnimated = true;
+
+        runCounterAnimation();
+
+    }
+
+    // Reset only after section has completely left the screen
+    if (rect.bottom < 0 || rect.top > window.innerHeight) {
+
+        isCounterAnimated = false;
+
+    }
 
 }
+
+window.addEventListener("scroll", handleCounter);
+window.addEventListener("load", handleCounter);
