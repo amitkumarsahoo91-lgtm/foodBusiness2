@@ -103,7 +103,7 @@ function animateCounter(counter) {
 
 }
 
-const observer = new IntersectionObserver((entries) => {
+const counterObserver = new IntersectionObserver((entries) => {
 
     entries.forEach(entry => {
 
@@ -138,4 +138,4 @@ const observer = new IntersectionObserver((entries) => {
 
 });
 
-observer.observe(counterSection);
+counterObserver.observe(counterSection);
