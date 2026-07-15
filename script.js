@@ -75,30 +75,25 @@ if (topBtn) {
 // Counter Animation (Professional)
 // ===============================
 
-const counterSection = document.querySelector(".counter");
 const counters = document.querySelectorAll(".count");
+const counterSection = document.querySelector(".counter");
 
-let counterStarted = false;
+let hasAnimated = false;
 
 function animateCounter(counter) {
 
-    const target = +counter.dataset.target;
-    const speed = 20;
+    const target = Number(counter.dataset.target);
     const increment = Math.ceil(target / 100);
 
     function update() {
 
-        let current = +counter.innerText;
+        const current = Number(counter.innerText);
 
         if (current < target) {
 
             counter.innerText = Math.min(current + increment, target);
 
-            setTimeout(update, speed);
-
-        } else {
-
-            counter.innerText = target;
+            setTimeout(update, 20);
 
         }
 
@@ -108,36 +103,32 @@ function animateCounter(counter) {
 
 }
 
-const counterObserver = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
 
     entries.forEach(entry => {
 
-        // Start animation when 50% visible
-        if (entry.isIntersecting && !counterStarted) {
+        if (entry.isIntersecting && !hasAnimated) {
 
-            counterStarted = true;
+            hasAnimated = true;
 
+            // Reset counters just before animation
             counters.forEach(counter => {
-
                 counter.innerText = "0";
-                animateCounter(counter);
-
             });
+
+            // Small delay so the reset is visible
+            setTimeout(() => {
+                counters.forEach(counter => animateCounter(counter));
+            }, 100);
 
         }
 
-        // Reset only after section completely leaves screen
-        if (!entry.isIntersecting) {
+        // Allow animation again after the section is completely out of view
+        if (!entry.isIntersecting && entry.intersectionRatio === 0) {
 
-    counterStarted = false;
+            hasAnimated = false;
 
-    counters.forEach(counter => {
-
-        counter.innerText = "0";
-
-    });
-
-}
+        }
 
     });
 
@@ -147,4 +138,4 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 });
 
-counterObserver.observe(counterSection);
+observer.observe(counterSection);
