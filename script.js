@@ -1,50 +1,56 @@
-// ===============================
-// Scroll Reveal
-// ===============================
+// ============================================
+// Scroll Reveal Animation
+// ============================================
 
 const hiddenElements = document.querySelectorAll(".hidden");
 
-const observer = new IntersectionObserver((entries)=>{
+const revealObserver = new IntersectionObserver((entries) => {
 
-entries.forEach(entry=>{
+    entries.forEach(entry => {
 
-if(entry.isIntersecting){
+        if (entry.isIntersecting) {
 
-entry.target.classList.add("show");
+            entry.target.classList.add("show");
 
-}
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+hiddenElements.forEach(element => {
+
+    revealObserver.observe(element);
 
 });
 
-});
 
-hiddenElements.forEach(el=>observer.observe(el));
+// ============================================
+// Sticky Navbar
+// ============================================
 
-// ===============================
-// Navbar Background
-// ===============================
+const header = document.getElementById("header");
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-const header=document.getElementById("header");
+    if (window.scrollY > 80) {
 
-if(window.scrollY>80){
+        header.classList.add("scrolled");
 
-header.classList.add("scrolled");
+    } else {
 
-}
+        header.classList.remove("scrolled");
 
-else{
-
-header.classList.remove("scrolled");
-
-}
+    }
 
 });
 
-// ===============================
-// Back To Top
-// ===============================
+
+// ============================================
+// Back To Top Button
+// ============================================
 
 const topBtn = document.getElementById("topBtn");
 
@@ -53,89 +59,104 @@ if (topBtn) {
     window.addEventListener("scroll", () => {
 
         if (window.scrollY > 300) {
-            topBtn.style.display = "block";
+
+            topBtn.style.display = "flex";
+
         } else {
+
             topBtn.style.display = "none";
+
         }
 
     });
 
-    topBtn.onclick = () => {
+    topBtn.addEventListener("click", () => {
 
         window.scrollTo({
+
             top: 0,
             behavior: "smooth"
+
         });
 
-    };
+    });
 
 }
 
-// ===============================
-// Counter Animation (Professional)
-// ===============================
 
-const counters = document.querySelectorAll(".count");
+// ============================================
+// Counter Animation
+// ============================================
+
 const counterSection = document.querySelector(".counter");
+const counters = document.querySelectorAll(".count");
 
-let hasAnimated = false;
+let counterPlayed = false;
 
 function animateCounter(counter) {
 
     const target = Number(counter.dataset.target);
-    const increment = Math.ceil(target / 100);
+    const duration = 2000;
+    const stepTime = 20;
+    const steps = duration / stepTime;
+    const increment = target / steps;
 
-    function update() {
+    let current = 0;
 
-        const current = Number(counter.innerText);
+    counter.innerText = "0";
 
-        if (current < target) {
+    const timer = setInterval(() => {
 
-            counter.innerText = Math.min(current + increment, target);
+        current += increment;
 
-            setTimeout(update, 20);
+        if (current >= target) {
+
+            counter.innerText = target;
+            clearInterval(timer);
+
+        } else {
+
+            counter.innerText = Math.floor(current);
 
         }
 
-    }
-
-    update();
+    }, stepTime);
 
 }
 
-const counterObserver = new IntersectionObserver((entries) => {
+if (counterSection) {
 
-    entries.forEach(entry => {
+    const counterObserver = new IntersectionObserver((entries) => {
 
-        if (entry.isIntersecting && !hasAnimated) {
+        entries.forEach(entry => {
 
-            hasAnimated = true;
+            if (entry.isIntersecting && !counterPlayed) {
 
-            // Reset counters just before animation
-            counters.forEach(counter => {
-                counter.innerText = "0";
-            });
+                counterPlayed = true;
 
-            // Small delay so the reset is visible
-            setTimeout(() => {
-                counters.forEach(counter => animateCounter(counter));
-            }, 100);
+                counters.forEach(counter => {
 
-        }
+                    animateCounter(counter);
 
-        // Allow animation again after the section is completely out of view
-        if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+                });
 
-            hasAnimated = false;
+            }
 
-        }
+            // Reset only when the section is completely outside the viewport
+            if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+
+                counterPlayed = false;
+
+            }
+
+        });
+
+    }, {
+
+        threshold: 0.5
 
     });
 
-}, {
+    counterObserver.observe(counterSection);
 
-    threshold: 0.5
-
-});
-
-counterObserver.observe(counterSection);
+}
