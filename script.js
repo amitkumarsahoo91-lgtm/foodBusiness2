@@ -72,37 +72,79 @@ if (topBtn) {
 }
 
 // ===============================
-// Counter Animation
+// Counter Animation (Professional)
 // ===============================
 
-const counters=document.querySelectorAll(".count");
+const counterSection = document.querySelector(".counter");
+const counters = document.querySelectorAll(".count");
 
-counters.forEach(counter=>{
+let counterStarted = false;
 
-const updateCounter=()=>{
+function animateCounter(counter) {
 
-const target=+counter.getAttribute("data-target");
+    const target = +counter.dataset.target;
+    const speed = 20;
+    const increment = Math.ceil(target / 100);
 
-const current=+counter.innerText;
+    function update() {
 
-const increment=target/100;
+        let current = +counter.innerText;
 
-if(current<target){
+        if (current < target) {
 
-counter.innerText=Math.ceil(current+increment);
+            counter.innerText = Math.min(current + increment, target);
 
-setTimeout(updateCounter,20);
+            setTimeout(update, speed);
+
+        } else {
+
+            counter.innerText = target;
+
+        }
+
+    }
+
+    update();
 
 }
 
-else{
+const counterObserver = new IntersectionObserver((entries) => {
 
-counter.innerText=target;
+    entries.forEach(entry => {
+
+        // Start animation when 50% visible
+        if (entry.isIntersecting && !counterStarted) {
+
+            counterStarted = true;
+
+            counters.forEach(counter => {
+
+                counter.innerText = "0";
+                animateCounter(counter);
+
+            });
+
+        }
+
+        // Reset only after section completely leaves screen
+        if (!entry.isIntersecting) {
+
+    counterStarted = false;
+
+    counters.forEach(counter => {
+
+        counter.innerText = "0";
+
+    });
 
 }
 
-};
+    });
 
-updateCounter();
+}, {
+
+    threshold: 0.5
 
 });
+
+counterObserver.observe(counterSection);
