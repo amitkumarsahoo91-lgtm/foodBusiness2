@@ -72,6 +72,8 @@ backdrop-filter:blur(10px);
 
 z-index:1000;
 
+animation:slideDown .8s ease;
+
 }
 
 .logo{
@@ -87,6 +89,8 @@ display:flex;
 align-items:center;
 
 gap:10px;
+
+transition:.4s ease;
 
 }
 
@@ -141,6 +145,8 @@ color:#FFB703;
 
     color: white;
     overflow: hidden;
+	
+	animation:heroZoom 12s ease-in-out infinite alternate;
 }
 
 .overlay{
@@ -255,9 +261,11 @@ cursor:pointer;
 
 .btn:hover{
 
-transform:translateY(-5px);
+    transform:translateY(-6px) scale(1.05);
 
-background:#c82333;
+    background:#c82333;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
 
 }
 
@@ -1143,5 +1151,104 @@ margin-top:0;
 grid-template-columns:1fr;
 
 }
+
+}
+
+/* ===================================
+   HERO FADE-IN ANIMATIONS
+=================================== */
+
+.hero-content h1{
+    animation: fadeDown 1s ease forwards;
+}
+
+.hero-content p{
+    opacity:0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay:0.5s;
+}
+
+.buttons{
+    opacity:0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay:1s;
+}
+
+
+/* Keyframes */
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Navigation Animation */
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Hero Background Animation */
+
+@keyframes heroZoom{
+
+    from{
+
+        background-size:100%;
+
+    }
+
+    to{
+
+        background-size:108%;
+
+    }
+
+}
+
+.logo:hover{
+
+    transform:scale(1.08);
+
+    color:#FFB703;
 
 }
