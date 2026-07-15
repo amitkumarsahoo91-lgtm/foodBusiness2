@@ -85,27 +85,25 @@ if (topBtn) {
 
 
 // ============================================
-// Counter Animation
+// Counter Animation (Every Entry)
 // ============================================
 
 const counterSection = document.querySelector(".counter");
 const counters = document.querySelectorAll(".count");
 
-let isCounterAnimated = false;
+let lastState = false;
 
-function runCounterAnimation() {
+function animateCounters() {
 
     counters.forEach(counter => {
 
-        const target = parseInt(counter.dataset.target);
-        const duration = 2000;
-        const stepTime = 20;
-        const totalSteps = duration / stepTime;
-        const increment = target / totalSteps;
+        const target = Number(counter.dataset.target);
+
+        counter.innerText = "0";
 
         let current = 0;
 
-        counter.innerText = "0";
+        const increment = Math.ceil(target / 100);
 
         const timer = setInterval(() => {
 
@@ -118,42 +116,35 @@ function runCounterAnimation() {
 
             } else {
 
-                counter.innerText = Math.floor(current);
+                counter.innerText = current;
 
             }
 
-        }, stepTime);
+        },20);
 
     });
 
 }
 
-function handleCounter() {
-
-    if (!counterSection) return;
+function checkCounter() {
 
     const rect = counterSection.getBoundingClientRect();
 
-    const sectionVisible =
-        rect.top <= window.innerHeight * 0.7 &&
-        rect.bottom >= window.innerHeight * 0.3;
+    // Section is considered visible
+    const visible =
+        rect.top < window.innerHeight * 0.7 &&
+        rect.bottom > window.innerHeight * 0.3;
 
-    if (sectionVisible && !isCounterAnimated) {
+    // User has JUST entered the section
+    if (visible && !lastState) {
 
-        isCounterAnimated = true;
-
-        runCounterAnimation();
-
-    }
-
-    // Reset only after section has completely left the screen
-    if (rect.bottom < 0 || rect.top > window.innerHeight) {
-
-        isCounterAnimated = false;
+        animateCounters();
 
     }
+
+    lastState = visible;
 
 }
 
-window.addEventListener("scroll", handleCounter);
-window.addEventListener("load", handleCounter);
+window.addEventListener("scroll", checkCounter);
+window.addEventListener("load", checkCounter);
