@@ -154,94 +154,121 @@ window.addEventListener("load", checkCounter);
 
 let cart = [];
 
-function addToCart(name, price){
+function addToCart(name, price) {
 
     const item = cart.find(food => food.name === name);
 
-    if(item){
-
+    if (item) {
         item.quantity++;
-
-    }
-
-    else{
-
+    } else {
         cart.push({
-
-            name:name,
-            price:price,
-            quantity:1
-
+            name: name,
+            price: price,
+            quantity: 1
         });
-
     }
 
     updateCart();
 
     document.getElementById("cart").scrollIntoView({
-
-        behavior:"smooth"
-
+        behavior: "smooth"
     });
-
 }
 
-function updateCart(){
+
+// Increase Quantity
+function increaseQty(index) {
+    cart[index].quantity++;
+    updateCart();
+}
+
+
+// Decrease Quantity
+function decreaseQty(index) {
+
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        cart.splice(index, 1);
+    }
+
+    updateCart();
+}
+
+
+// Remove Item
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+
+// Refresh Cart
+function updateCart() {
 
     const cartItems = document.getElementById("cart-items");
-
     const empty = document.getElementById("empty-cart");
 
-    cartItems.innerHTML="";
+    cartItems.innerHTML = "";
 
-    if(cart.length===0){
+    if (cart.length === 0) {
 
         cartItems.appendChild(empty);
 
-        document.getElementById("cart-count").innerText=0;
-
-        document.getElementById("cart-total").innerText="₹0";
+        document.getElementById("cart-count").innerText = 0;
+        document.getElementById("cart-total").innerText = "₹0";
 
         return;
-
     }
 
-    let total=0;
+    let total = 0;
+    let count = 0;
 
-    let count=0;
+    cart.forEach((item, index) => {
 
-    cart.forEach((item,index)=>{
-
-        total += item.price*item.quantity;
-
+        total += item.price * item.quantity;
         count += item.quantity;
 
         cartItems.innerHTML += `
 
         <div class="cart-item">
 
-            <div>
+            <div class="cart-left">
 
                 <h3>${item.name}</h3>
 
-                <p>₹${item.price} × ${item.quantity}</p>
+                <p>₹${item.price} each</p>
 
             </div>
 
-            <div>
+            <div class="cart-right">
 
-                <strong>₹${item.price*item.quantity}</strong>
+                <div class="qty-box">
+
+                    <button onclick="decreaseQty(${index})">−</button>
+
+                    <span>${item.quantity}</span>
+
+                    <button onclick="increaseQty(${index})">+</button>
+
+                </div>
+
+                <strong>₹${item.price * item.quantity}</strong>
+
+                <button class="remove-btn"
+                        onclick="removeItem(${index})">
+
+                    <i class="fas fa-trash"></i>
+
+                </button>
 
             </div>
 
         </div>
 
         `;
-
     });
 
-    document.getElementById("cart-count").innerText=count;
-
-    document.getElementById("cart-total").innerText="₹"+total;
-
+    document.getElementById("cart-count").innerText = count;
+    document.getElementById("cart-total").innerText = "₹" + total;
 }
