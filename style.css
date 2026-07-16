@@ -145,7 +145,7 @@ color:#FFB703;
     justify-content:flex-start;
 
     align-items:center;
-    padding:120px 8% 0;
+    padding:8% 0;
 
     text-align:left;
 
@@ -180,9 +180,9 @@ color:#FFB703;
 
     width:100%;
 
-    max-width:620px;
+    max-width:600px;
 
-    padding:45px;
+    padding:38px 42px;
 
     border-radius:28px;
 
@@ -218,15 +218,17 @@ color:#FFB703;
 
 .hero-content h1{
 
-    font-size:58px;
+    font-size:54px;
     font-weight:800;
-    line-height:1.1;
-    margin:15px 0;
+    line-height:1.01;
+    margin:18px 0;
 }
 
 
 .hero-content p{
-
+	
+	max-width:520px
+	
     font-size:19px;
 
     color:#F8F8F8;
@@ -247,7 +249,7 @@ color:#FFB703;
 
     flex-wrap:wrap;
 
-    margin-top:10px;
+    margin-top:22px;
 
 }
 
@@ -309,15 +311,15 @@ color:#1D3557;
 
     display:block;
 
-    width:90px;
+    width:70px;
 
-    height:5px;
+    height:4px;
 
     background:#FFB703;
 
     border-radius:20px;
 
-    margin-bottom:22px;
+    margin-bottom:18px;
 
 }
 
@@ -344,23 +346,15 @@ color:#1D3557;
 }
 
 .chef-name{
-
-    font-size:17px;
-
-    color:#EAEAEA;
-
-    margin:8px 0 20px;
-
+    margin:5px 0 22px;
+    font-size:18px;
+    color:#F5F5F5;
     font-style:italic;
-
 }
 
 .chef-name span{
-
     color:#FFB703;
-
     font-weight:700;
-
 }
 
 /* ================= ABOUT ================= */
