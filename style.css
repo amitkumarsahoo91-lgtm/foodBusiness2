@@ -547,13 +547,13 @@ line-height:1.8;
 
 .timeline{
 
-    display:flex;
+display:flex;
 
-    justify-content:space-between;
+justify-content:space-between;
 
-    gap:25px;
+position:relative;
 
-    flex-wrap:wrap;
+flex-wrap:wrap;
 
 }
 
@@ -579,9 +579,13 @@ z-index:0;
 
 .timeline-item{
 
-    flex:1;
+width:30%;
 
-    min-width:220px;
+text-align:center;
+
+position:relative;
+
+z-index:1;
 
 }
 
