@@ -974,6 +974,20 @@ text-align:center;
 
 }
 
+.career-icon{
+
+font-size:55px;
+
+color:#E63946;
+
+margin:25px 0 20px;
+
+display:block;
+
+animation:targetPulse 2s infinite;
+
+}
+
 .career p{
 
 max-width:800px;
@@ -1527,6 +1541,28 @@ grid-template-columns:1fr;
 .skills-container{
 
     grid-template-columns:1fr;
+
+}
+
+}
+
+@keyframes targetPulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.15);
+
+}
+
+100%{
+
+transform:scale(1);
 
 }
 
