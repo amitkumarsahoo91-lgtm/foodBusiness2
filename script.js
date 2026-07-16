@@ -215,7 +215,6 @@ function updateCart() {
 
         cartItems.appendChild(empty);
 
-        document.getElementById("cart-count").innerText = 0;
         document.getElementById("cart-total").innerText = "₹0";
 
         return;
@@ -269,6 +268,5 @@ function updateCart() {
         `;
     });
 
-    document.getElementById("cart-count").innerText = count;
-    document.getElementById("cart-total").innerText = "₹" + total;
+    document.getElementById("cart-total").innerText = total;
 }

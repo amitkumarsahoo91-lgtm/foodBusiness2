@@ -1096,7 +1096,7 @@ Order Now
 
 <!-- ================= CART ================= -->
 
-<section id="cart" class="cart-section">
+<section id="cart" class="cart">
 
     <div class="section-title">
 
@@ -1107,41 +1107,48 @@ Order Now
         <h2>Your Selected Items</h2>
 
         <p>
-            Review your order before contacting us.
+            Review your selected dishes before placing your order.
         </p>
 
     </div>
 
-    <!-- Cart Items -->
-    <div class="cart-items" id="cart-items">
+    <div class="cart-container">
 
-        <p class="empty-cart" id="empty-cart">
+        <!-- ================= LEFT : CART ITEMS ================= -->
 
-            <i class="fas fa-shopping-basket"></i>
-            Your cart is empty.
+        <div class="cart-items" id="cart-items">
 
-        </p>
+            <p class="empty-cart" id="empty-cart">
+
+                <i class="fas fa-shopping-basket"></i>
+
+                Your cart is empty.
+
+            </p>
+
+        </div>
+
+        <!-- ================= RIGHT : ORDER SUMMARY ================= -->
+
+        <div class="cart-summary">
+
+            <h3>Order Summary</h3>
+
+            <div class="summary-row">
+
+                <span>Total Amount</span>
+
+                <strong>₹<span id="cart-total">0</span></strong>
+
+            </div>
+
+            <a href="#contact" class="checkout-btn">
+                Proceed to Contact
+            </a>
+
+        </div>
 
     </div>
-
-    <!-- Cart Summary -->
-    <div class="cart-summary">
-
-        <h3>Total: ₹<span id="cart-total">0</span></h3>
-
-        <a href="#contact" class="btn">
-            Proceed to Contact
-        </a>
-
-    </div>
-	
-	<div class="summary-row">
-
-    <span>Total Items</span>
-
-    <strong id="cart-count">0</strong>
-
-</div>
 
 </section>
 
