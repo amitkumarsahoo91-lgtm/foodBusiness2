@@ -976,13 +976,13 @@ text-align:center;
 
 .career-icon{
 
-font-size:55px;
+display:block;
+
+font-size:60px;
 
 color:#E63946;
 
-margin:25px 0 20px;
-
-display:block;
+margin:0 auto 18px;
 
 animation:targetPulse 2s infinite;
 
