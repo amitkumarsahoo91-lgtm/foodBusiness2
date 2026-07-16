@@ -270,3 +270,80 @@ function updateCart() {
 
     document.getElementById("cart-total").innerText = total;
 }
+
+function goToCheckout(){
+
+    updateCheckout();
+
+    document.getElementById("checkout").scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+function updateCheckout(){
+
+    const list = document.getElementById("checkout-items");
+
+    list.innerHTML="";
+
+    let total=0;
+
+    cart.forEach(item=>{
+
+        total += item.price*item.quantity;
+
+        list.innerHTML += `
+
+        <div class="checkout-item">
+
+            <span>
+
+                ${item.name} × ${item.quantity}
+
+            </span>
+
+            <strong>
+
+                ₹${item.price*item.quantity}
+
+            </strong>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("checkout-total").innerText=total;
+
+}
+
+function placeOrder(){
+
+    const name=document.getElementById("customer-name").value.trim();
+    const phone=document.getElementById("customer-phone").value.trim();
+    const email=document.getElementById("customer-email").value.trim();
+    const address=document.getElementById("customer-address").value.trim();
+
+    if(cart.length===0){
+
+        alert("Your cart is empty.");
+
+        return;
+
+    }
+
+    if(name==="" || phone==="" || email==="" || address===""){
+
+        alert("Please complete all required fields.");
+
+        return;
+
+    }
+
+    alert("🎉 Thank you, "+name+"!\n\nYour FreshBites order has been placed successfully.");
+
+}

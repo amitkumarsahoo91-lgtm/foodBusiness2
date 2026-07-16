@@ -1142,9 +1142,129 @@ Order Now
 
             </div>
 
-            <a href="#contact" class="checkout-btn">
-                Proceed to Contact
-            </a>
+            <button class="checkout-btn" onclick="goToCheckout()">
+
+    Proceed to Checkout
+
+</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CHECKOUT ================= -->
+
+<section id="checkout" class="checkout">
+
+    <div class="section-title">
+
+        <i class="fas fa-credit-card section-icon"></i>
+
+        <span>CHECKOUT</span>
+
+        <h2>Complete Your Order</h2>
+
+        <p>
+
+            Fill in your details to place your FreshBites order.
+
+        </p>
+
+    </div>
+
+    <div class="checkout-container">
+
+        <!-- Left -->
+
+        <div class="checkout-form">
+
+            <div class="input-box">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="customer-name"
+                    placeholder="Enter your full name">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Mobile Number</label>
+
+                <input
+                    type="tel"
+                    id="customer-phone"
+                    placeholder="Enter your mobile number">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Email Address</label>
+
+                <input
+                    type="email"
+                    id="customer-email"
+                    placeholder="Enter your email">
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Delivery Address</label>
+
+                <textarea
+                    id="customer-address"
+                    rows="4"
+                    placeholder="Enter your delivery address"></textarea>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Special Instructions</label>
+
+                <textarea
+                    id="customer-note"
+                    rows="3"
+                    placeholder="Extra cheese, less spicy, etc."></textarea>
+
+            </div>
+
+            <button
+                class="checkout-btn"
+                onclick="placeOrder()">
+
+                Place Order
+
+            </button>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="checkout-summary">
+
+            <h3>Your Order</h3>
+
+            <div id="checkout-items">
+
+                No items added.
+
+            </div>
+
+            <hr>
+
+            <h2>
+
+                Total :
+                ₹<span id="checkout-total">0</span>
+
+            </h2>
 
         </div>
 
