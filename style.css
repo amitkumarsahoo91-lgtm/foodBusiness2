@@ -144,8 +144,8 @@ color:#FFB703;
 
     justify-content:flex-start;
 
-    align-items:flex-start;
-    padding-top:140px;
+    align-items:center;
+    padding:120px 8% 0;
 
     text-align:left;
 
@@ -153,7 +153,7 @@ color:#FFB703;
 
     overflow:hidden;
 
-    padding:0 8%;
+    
 }
 
 .overlay{
@@ -180,9 +180,9 @@ color:#FFB703;
 
     width:100%;
 
-    max-width:700px;
+    max-width:620px;
 
-    padding:50px 45px;
+    padding:45px;
 
     border-radius:28px;
 
@@ -218,7 +218,7 @@ color:#FFB703;
 
 .hero-content h1{
 
-    font-size:64px;
+    font-size:58px;
     font-weight:800;
     line-height:1.1;
     margin:15px 0;
@@ -257,13 +257,13 @@ color:#FFB703;
 
     color:white;
 
-    padding:16px 36px;
+    padding:15px 32px;
 
     border-radius:50px;
 
     text-decoration:none;
 
-    font-size:18px;
+    font-size:17px;
 
     font-weight:600;
 
@@ -317,7 +317,7 @@ color:#1D3557;
 
     border-radius:20px;
 
-    margin-bottom:15px;
+    margin-bottom:22px;
 
 }
 
@@ -345,15 +345,13 @@ color:#1D3557;
 
 .chef-name{
 
-    margin:6px 0 12px;
+    font-size:17px;
 
-    font-size:18px;
+    color:#EAEAEA;
 
-    font-weight:500;
+    margin:8px 0 20px;
 
-    color:#F1FAEE;
-
-    letter-spacing:1px;
+    font-style:italic;
 
 }
 
