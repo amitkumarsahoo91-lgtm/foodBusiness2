@@ -724,7 +724,7 @@ background:#ffffff;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(4,1fr);
 
 gap:35px;
 
@@ -1509,5 +1509,25 @@ grid-template-columns:1fr;
 .timeline-item:hover{
 
     transform:translateY(-10px);
+
+}
+
+@media (max-width:992px){
+
+.skills-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media (max-width:576px){
+
+.skills-container{
+
+    grid-template-columns:1fr;
+
+}
 
 }
