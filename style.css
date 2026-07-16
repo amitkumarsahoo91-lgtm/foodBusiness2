@@ -1338,15 +1338,30 @@ font-size:18px;
 
 .order-btn{
 
-    margin-top:auto;
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 30px;
 
-    margin-bottom:25px;
+    background:#E63946;
+    color:#fff;
+
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+
+    border-radius:50px;
+
+    transition:.35s ease;
 
 }
 
 .order-btn:hover{
 
-background:#1D3557;
+    background:#FFB703;
+    color:#fff;
+
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(230,57,70,.35);
 
 }
 
