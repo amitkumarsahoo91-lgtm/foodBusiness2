@@ -1381,6 +1381,176 @@ font-size:18px;
 
 }
 
+/* ================= CART ================= */
+
+.cart{
+
+    padding:100px 8%;
+
+    background:#f9fafc;
+
+}
+
+.cart-container{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:35px;
+
+    margin-top:50px;
+
+}
+
+.cart-items{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+    min-height:320px;
+
+}
+
+.empty-cart{
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:22px;
+
+    margin-top:90px;
+
+}
+
+.empty-cart i{
+
+    display:block;
+
+    font-size:65px;
+
+    color:#E63946;
+
+    margin-bottom:18px;
+
+}
+
+.cart-summary{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+    height:fit-content;
+
+    position:sticky;
+
+    top:110px;
+
+}
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #eee;
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+.checkout-btn{
+
+    width:100%;
+
+    margin-top:35px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#E63946;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.checkout-btn:hover{
+
+    background:#c62839;
+
+    transform:translateY(-3px);
+
+}
+
+.cart-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.cart-item h3{
+
+    margin:0;
+
+    color:#1D3557;
+
+    font-size:22px;
+
+}
+
+.cart-item p{
+
+    margin-top:8px;
+
+    color:#777;
+
+}
+
+.cart-item strong{
+
+    color:#E63946;
+
+    font-size:22px;
+
+}
+
 /*=========================
       CONTACT
 =========================*/
@@ -1850,5 +2020,23 @@ grid-template-columns:1fr;
         opacity:1;
         transform:translateY(0) scale(1);
     }
+
+}
+
+@media(max-width:900px){
+
+.cart-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.cart-summary{
+
+    position:relative;
+
+    top:0;
+
+}
 
 }

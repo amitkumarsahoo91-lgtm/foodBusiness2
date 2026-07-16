@@ -61,6 +61,8 @@
             <li><a href="#gallery">Gallery</a></li>
 
             <li><a href="#contact">Contact</a></li>
+			
+			<li><a href="#cart">Cart</a></li>
 
         </ul>
 
@@ -793,7 +795,10 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('Chicken Biryani',329)">
+Order Now
+</button>
 
 </div>
 
@@ -826,7 +831,10 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('Grilled Chicken',399)">
+Order Now
+</button>
 
 </div>
 		
@@ -859,7 +867,10 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('Traditional Indian Thali',349)">
+Order Now
+</button>
 
 </div>
 		
@@ -892,7 +903,10 @@
 
     </div>
 	
-	<a href="#contact" class="order-btn">Order Now</a>
+	<button class="order-btn"
+onclick="addToCart('Margherita Pizza',299)">
+Order Now
+</button>
 
 </div>
 
@@ -925,7 +939,10 @@
 
     </div>
 	
-	<a href="#contact" class="order-btn">Order Now</a>
+	<button class="order-btn"
+onclick="addToCart('Cheese Burger',199)">
+Order Now
+</button>
 
 </div>
 
@@ -958,7 +975,10 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('White Sauce Pasta',249)">
+Order Now
+</button>
 
 </div>
 
@@ -991,7 +1011,10 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('Chocolate Truffle Cake',179)">
+Order Now
+</button>
 
 </div>
 
@@ -1024,7 +1047,10 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('Fresh Mixed Berry Juice',129)">
+Order Now
+</button>
 
 </div>
 
@@ -1057,9 +1083,55 @@
 
     </div>
 
-    <a href="#contact" class="order-btn">Order Now</a>
+    <button class="order-btn"
+onclick="addToCart('Chocolate Ice Cream',149)">
+Order Now
+</button>
 
 </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CART ================= -->
+
+<section id="cart" class="cart-section">
+
+    <div class="section-title">
+
+        <i class="fas fa-shopping-cart section-icon"></i>
+
+        <span>YOUR CART</span>
+
+        <h2>Your Selected Items</h2>
+
+        <p>
+            Review your order before contacting us.
+        </p>
+
+    </div>
+
+    <!-- Cart Items -->
+    <div class="cart-items" id="cart-items">
+
+        <p class="empty-cart" id="empty-cart">
+
+            <i class="fas fa-shopping-basket"></i>
+            Your cart is empty.
+
+        </p>
+
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+
+        <h3>Total: ₹<span id="cart-total">0</span></h3>
+
+        <a href="#contact" class="btn">
+            Proceed to Contact
+        </a>
 
     </div>
 

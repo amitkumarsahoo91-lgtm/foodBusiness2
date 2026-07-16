@@ -149,3 +149,99 @@ function checkCounter() {
 
 window.addEventListener("scroll", checkCounter);
 window.addEventListener("load", checkCounter);
+
+//==================== SHOPPING CART ====================
+
+let cart = [];
+
+function addToCart(name, price){
+
+    const item = cart.find(food => food.name === name);
+
+    if(item){
+
+        item.quantity++;
+
+    }
+
+    else{
+
+        cart.push({
+
+            name:name,
+            price:price,
+            quantity:1
+
+        });
+
+    }
+
+    updateCart();
+
+    document.getElementById("cart").scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+function updateCart(){
+
+    const cartItems = document.getElementById("cart-items");
+
+    const empty = document.getElementById("empty-cart");
+
+    cartItems.innerHTML="";
+
+    if(cart.length===0){
+
+        cartItems.appendChild(empty);
+
+        document.getElementById("cart-count").innerText=0;
+
+        document.getElementById("cart-total").innerText="₹0";
+
+        return;
+
+    }
+
+    let total=0;
+
+    let count=0;
+
+    cart.forEach((item,index)=>{
+
+        total += item.price*item.quantity;
+
+        count += item.quantity;
+
+        cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+            <div>
+
+                <h3>${item.name}</h3>
+
+                <p>₹${item.price} × ${item.quantity}</p>
+
+            </div>
+
+            <div>
+
+                <strong>₹${item.price*item.quantity}</strong>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("cart-count").innerText=count;
+
+    document.getElementById("cart-total").innerText="₹"+total;
+
+}
