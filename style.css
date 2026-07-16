@@ -208,7 +208,7 @@ color:#FFB703;
 	
 	animation:
         heroAppear 1s ease forwards,
-        glassFloat 6s ease-in-out infinite 1s;
+        glassFloat 6s ease-in-out infinite;
 
 }
 
