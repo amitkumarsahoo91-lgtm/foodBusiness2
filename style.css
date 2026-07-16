@@ -1172,6 +1172,18 @@ transition:.3s;
 
 }
 
+.hobby-card p{
+
+    margin-top:15px;
+
+    color:#666;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+}
+
 .hobby-card:hover{
 
 transform:translateY(-10px);
